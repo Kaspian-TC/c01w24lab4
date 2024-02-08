@@ -39,7 +39,7 @@ function App() {
   }, [])
 
   const deleteNote = async (entry) => {
-    deleteNoteState(entry._id);
+    
 
     try {
       const response = await fetch(`http://localhost:4000/deleteNote/${entry._id}`, {
@@ -51,6 +51,8 @@ function App() {
   
       if (!response.ok) {
         console.log("Server failed to delete the note:", response.status);
+      } else{
+        deleteNoteState(entry._id);
       }
     } catch (error) {
       console.error("Delete function failed:", error);
